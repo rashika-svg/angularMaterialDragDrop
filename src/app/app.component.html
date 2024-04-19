@@ -1,0 +1,24 @@
+<div style="margin: auto; width:40%; padding: 1rem 0; font-size: x-large;" class="jacquard-24-regular">
+  <div
+    style="padding: 1rem; font-size: larger; font-weight:500; background-color: #102C57; border-radius: 5px; display: flex; justify-content: space-between; color: white; align-items: center;">
+    Draggable Items
+    <button (click)="openMovieDialog(true)" matTooltip="Click to add"><i class="material-icons">add</i></button>
+  </div>
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" style="margin-top: 1rem;">
+    <div class="example-box jacquard-24-regular" *ngFor="let movie of movies; let i=index" cdkDrag
+      style="color: rgb(57, 57, 57); font-size:x-large; border: 1.5px solid white">
+      <span style="font-weight: 500">
+        Episode {{movie.order}}
+      </span>
+      {{movie.label}}
+      <div>
+        <button (click)="openMovieDialog(false,movie.label)" style="margin-right: 5px; color: #102C57;"><i
+            class="material-icons">edit</i></button>
+        <button (click)="deleteMovie(i)" matTooltip="Delete" matTooltipClass="matTooltipClass"><i class="material-icons" style="color: rgb(255, 0, 93);">delete</i></button>
+      </div>
+    </div>
+  </div>
+  <div style="padding: 2rem 0" [className]="">
+    <span style="color: grey;">Index:</span> {{draggedIndex}} <span style="color: grey; margin-left: 1rem;">Label: </span>{{draggedMovie}}
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{ isNewMovie ? 'Add Movie' : 'Edit Movie' }}</h2>
+<div mat-dialog-content>
+    <form [formGroup]="movieForm">
+        <mat-form-field  style="width: 100%;">
+            <mat-label for="Label">Label</mat-label>
+            <input matInput formControlName="label" placeholder="Enter movie title" (keyup.enter)="add()">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-button color="accent" [mat-dialog-close]="label" cdkFocusInitial (click)="onSubmit()">
+        {{ isNewMovie ? 'Add' : 'Save' }}
+    </button>
+</div>
